@@ -3,6 +3,7 @@ import { StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import Logo from '../../assets/logo.svg';
+import { Car } from '../../components/Car';
 
 import {
   Container,
@@ -12,6 +13,25 @@ import {
 } from './styles';
 
 export function Home() {
+  const carDataOne = {
+    brand: 'Audi',
+    name: 'RS 5 Coupé',
+    rent: {
+      period: 'AO DIA',
+      price: 120,
+    },
+    thumbnail: 'https://www.freeiconspng.com/thumbs/audi-png/audi-png-red-image-17.png'
+  }
+  const carDataTwo = {
+    brand: 'Porsche',
+    name: 'Panamera',
+    rent: {
+      period: 'AO DIA',
+      price: 340,
+    },
+    thumbnail: 'https://freepikpsd.com/file/2019/10/porsche-panamera-png-5-Transparent-Images.png'
+  }
+
   return (
     <Container>
       <StatusBar
@@ -30,6 +50,8 @@ export function Home() {
           </TotalCars>
         </HeaderContent>
       </Header>
+      <Car data={carDataOne} />
+      <Car data={carDataTwo} />
     </Container>
   );
 }
