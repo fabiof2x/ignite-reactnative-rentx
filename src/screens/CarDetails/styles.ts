@@ -82,6 +82,7 @@ export const About = styled.Text`
 
 export const Accessories = styled.View`
   width: 100%;
+  max-width: 343px;
 
   flex-direction: row;
   flex-wrap: wrap;
