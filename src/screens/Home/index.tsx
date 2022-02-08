@@ -24,27 +24,8 @@ export function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const navigation = useNavigation<any>();
 
-  const carDataOne = {
-    brand: 'Audi',
-    name: 'RS 5 Coupé',
-    rent: {
-      period: 'AO DIA',
-      price: 120,
-    },
-    thumbnail: 'https://www.freeiconspng.com/thumbs/audi-png/audi-png-red-image-17.png'
-  }
-  const carDataTwo = {
-    brand: 'Porsche',
-    name: 'Panamera',
-    rent: {
-      period: 'AO DIA',
-      price: 340,
-    },
-    thumbnail: 'https://freepikpsd.com/file/2019/10/porsche-panamera-png-5-Transparent-Images.png'
-  }
-
-  function handleCarDetails() {
-    navigation.navigate('CarDetails')
+  function handleCarDetails(car: CarDTO) {
+    navigation.navigate('CarDetails', { car })
   }
 
   useEffect(() => {
@@ -88,7 +69,7 @@ export function Home() {
           keyExtractor={item => item.id}
           renderItem={({ item }) =>
             <Car data={item}
-              onPress={handleCarDetails}
+              onPress={() => handleCarDetails(item)}
             />}
         />
       }
