@@ -101,13 +101,13 @@ export function CarDetails() {
           <BackButton onPress={handleBack} />
         </Header>
 
-        <Animated.View style={sliderCarsStyleAnimation}>
-          <CarImages>
+        <CarImages>
+          <Animated.View style={sliderCarsStyleAnimation}>
             <ImageSlider
               imagesUrl={car.photos}
             />
-          </CarImages>
-        </Animated.View>
+          </Animated.View>
+        </CarImages>
       </Animated.View>
 
       <Animated.ScrollView
