@@ -23,13 +23,37 @@ import {
   FormTitle
 } from './styles';
 
+interface Params {
+  user: {
+    name: string;
+    email: string;
+    driverLicense: string;
+  }
+}
 
 export function SignUpSecondStep() {
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+
   const navigation = useNavigation<any>();
+
+  const route = useRoute();
   const theme = useTheme();
+
+  const { user } = route.params as Params;
 
   function handleBack() {
     navigation.goBack();
+  }
+
+  async function handleRegister() {
+    if (!password || !passwordConfirm) {
+      return Alert.alert('Informe a senha e a confirmação');
+    }
+
+    if (password != passwordConfirm) {
+      return Alert.alert('As senhas não são iguais');
+    }
   }
 
   return (
@@ -57,16 +81,21 @@ export function SignUpSecondStep() {
             <PasswordInput
               iconName="lock"
               placeholder="Senha"
+              onChangeText={setPassword}
+              value={password}
             />
             <PasswordInput
               iconName="lock"
               placeholder="Repetir Senha"
+              onChangeText={setPasswordConfirm}
+              value={passwordConfirm}
             />
           </Form>
 
           <Button
             color={theme.colors.success}
             title="Cadastrar"
+            onPress={handleRegister}
           />
         </Container>
       </TouchableWithoutFeedback>
