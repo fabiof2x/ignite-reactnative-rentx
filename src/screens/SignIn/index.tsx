@@ -21,12 +21,14 @@ import {
   Footer,
 } from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { useAuth } from '../../hooks/auth';
 
 export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigation = useNavigation<any>();
+  const { signIn } = useAuth();
 
   async function handleSignIn() {
     try {
@@ -40,7 +42,8 @@ export function SignIn() {
 
       await schema.validate({ email, password });
       Alert.alert('Tudo certo!');
-      //Fazer login
+
+      signIn({ email, password });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert('Opa', error.message);
