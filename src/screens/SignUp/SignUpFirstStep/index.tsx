@@ -23,7 +23,6 @@ import {
   Form,
   FormTitle
 } from './styles';
-import { useAuth } from '../../../hooks/auth';
 
 export function SignUpFirstStep() {
   const [name, setName] = useState('');
@@ -31,8 +30,6 @@ export function SignUpFirstStep() {
   const [driverLicense, setDriverLicense] = useState('');
 
   const navigation = useNavigation<any>();
-  const { user } = useAuth();
-  console.log("USUÁRIO AUTENTICADO", user);
 
   function handleBack() {
     navigation.goBack();
